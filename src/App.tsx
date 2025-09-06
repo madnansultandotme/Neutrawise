@@ -12,6 +12,8 @@ import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<SignIn />} />
             </Routes>
           </main>
           <Footer />

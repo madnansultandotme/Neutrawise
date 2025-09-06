@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import neutraWiseLogo from "@/assets/neutrawise-logo.png";
+import neutraWiseLogo from "@/assets/Neutra-Logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
+  const navigate = useNavigate()
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
@@ -48,7 +48,7 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <Button variant="default" size="sm">
+            <Button variant="default" size="sm" onClick={() => navigate('/register')}>
               Get Started
             </Button>
           </div>
