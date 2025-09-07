@@ -147,7 +147,11 @@ export default {
 				'scale-in': 'scale-in 0.4s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite'
-			}
+			},
+			fontFamily: {
+				sans: ["DM Sans", "sans-serif"], // default sans
+				dmsans: ["DM Sans", "sans-serif"], // custom alias
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

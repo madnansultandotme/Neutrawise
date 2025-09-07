@@ -39,6 +39,7 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               <Button 
+                onClick={() => window.location.href = '/auth'}
                 size="lg" 
                 className="bg-gradient-to-r from-eco-green to-eco-blue hover:from-eco-green-light hover:to-eco-blue text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 group"
               >

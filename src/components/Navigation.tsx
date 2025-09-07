@@ -48,7 +48,7 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <Button variant="default" size="sm">
+            <Button onClick={() => window.location.href = '/auth'} variant="default" size="sm">
               Get Started
             </Button>
           </div>
@@ -83,7 +83,7 @@ const Navigation = () => {
               </Link>
             ))}
             <div className="px-3 pt-2">
-              <Button variant="default" size="sm" className="w-full">
+              <Button  variant="default" size="sm" className="w-full">
                 Get Started
               </Button>
             </div>
