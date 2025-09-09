@@ -186,10 +186,10 @@ const SignIn = () => {
                   <Leaf className="w-8 h-8 text-white" />
                 </div>
               </div>
-              <h1 className="text-6xl font-bold text-gray-800 mb-3" style={{ fontFamily: 'Sloop Script Pro, cursive' }}>
+              <h1 className="text-6xl font-bold text-gray-800 mb-3" >
                 Sign In
               </h1>
-              <p className="text-gray-600 text-xl font-medium" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              <p className="text-gray-600 text-xl font-medium" >
                 Access your carbon impact dashboard
               </p>
             </div>
@@ -200,7 +200,7 @@ const SignIn = () => {
               <div className="group">
                 <div className="flex items-center space-x-2 mb-3">
                   <Mail className="w-4 h-4 text-blue-500" />
-                  <div className="text-sm font-bold text-gray-700" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  <div className="text-sm font-bold text-gray-700" >
                     Your Name
                   </div>
                 </div>
@@ -211,7 +211,7 @@ const SignIn = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     className="w-full px-6 py-5 border-2 border-gray-200 rounded-2xl focus:ring-3 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-500 bg-white/80 text-gray-900 placeholder-gray-400 text-lg"
-                    style={{ fontFamily: 'DM Sans, sans-serif' }}
+                    
                     placeholder="Enter your name"
                   />
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-green-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>

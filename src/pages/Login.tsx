@@ -163,10 +163,10 @@ const Login = () => {
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 p-8 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-3xl">
             {/* Header */}
             <div className="text-center mb-8">
-              <h1 className="text-5xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Sloop Script Pro, cursive' }}>
+              <h1 className="text-5xl font-bold text-gray-900 mb-3" >
                 Welcome Back
               </h1>
-              <p className="text-gray-600 text-lg" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              <p className="text-gray-600 text-lg">
                 Continue your sustainable journey
               </p>
             </div>
@@ -175,7 +175,7 @@ const Login = () => {
             <div className="space-y-6">
               {/* Email Field */}
               <div className="group">
-                <div className="block text-sm font-semibold text-gray-700 mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <div className="block text-sm font-semibold text-gray-700 mb-3" >
                   Email Address
                 </div>
                 <div className="relative">
@@ -186,7 +186,7 @@ const Login = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/90 text-gray-900 placeholder-gray-500"
-                    style={{ fontFamily: 'DM Sans, sans-serif' }}
+                    
                     placeholder="Enter your email"
                   />
                 </div>
@@ -194,7 +194,7 @@ const Login = () => {
 
               {/* Password Field */}
               <div className="group">
-                <div className="block text-sm font-semibold text-gray-700 mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <div className="block text-sm font-semibold text-gray-700 mb-3" >
                   Password
                 </div>
                 <div className="relative">
@@ -205,7 +205,7 @@ const Login = () => {
                     value={formData.password}
                     onChange={handleInputChange}
                     className="w-full pl-12 pr-12 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/90 text-gray-900 placeholder-gray-500"
-                    style={{ fontFamily: 'DM Sans, sans-serif' }}
+                    
                     placeholder="Enter your password"
                   />
                   <button
@@ -228,11 +228,11 @@ const Login = () => {
                     onChange={(e) => setRememberMe(e.target.checked)}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
-                  <label htmlFor="remember" className="text-sm text-gray-700" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  <label htmlFor="remember" className="text-sm text-gray-700" >
                     Remember me
                   </label>
                 </div>
-                <a href="#" className="text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <a href="#" className="text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors" >
                   Forgot password?
                 </a>
               </div>
@@ -246,7 +246,7 @@ const Login = () => {
                     ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-green-500 hover:from-blue-700 hover:via-blue-600 hover:to-green-600 hover:scale-[1.02] shadow-xl hover:shadow-2xl'
                     : 'bg-gray-300 cursor-not-allowed'
                 }`}
-                style={{ fontFamily: 'DM Sans, sans-serif' }}
+                
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center space-x-3">
@@ -267,7 +267,7 @@ const Login = () => {
                   <div className="w-full border-t border-gray-200"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white/80 text-gray-500 font-medium" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  <span className="px-4 bg-white/80 text-gray-500 font-medium" >
                     Or continue with
                   </span>
                 </div>
@@ -278,7 +278,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
-                  style={{ fontFamily: 'DM Sans, sans-serif' }}
+                  
                 >
                   <svg className="w-5 h-5 text-red-500 mr-3" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -291,7 +291,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
-                  style={{ fontFamily: 'DM Sans, sans-serif' }}
+                  
                 >
                   <svg className="w-5 h-5 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -302,7 +302,7 @@ const Login = () => {
 
               {/* Sign Up Link */}
               <div className="text-center pt-6 border-t border-gray-100">
-                <p className="text-gray-600" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <p className="text-gray-600" >
                   Don't have an account?{' '}
                   <a href="/register" className="text-blue-600 hover:text-blue-700 font-bold transition-colors hover:underline">
                     Sign Up
@@ -314,7 +314,7 @@ const Login = () => {
 
           {/* Additional eco-friendly message */}
           <div className="text-center mt-8">
-            <p className="text-sm text-gray-500 max-w-sm mx-auto" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+            <p className="text-sm text-gray-500 max-w-sm mx-auto" >
               Every login counts towards building a more sustainable future. 🌱
             </p>
           </div>
