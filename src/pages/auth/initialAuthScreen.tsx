@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InitialScreen = () => {
+const InitialAuthScreen = () => {
   return (
         <div className='w-full items-center justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50'>
             <div className='w-[90%] md:w-[50%] flex flex-col pb-14 justify-center items-center '>
@@ -13,10 +13,10 @@ const InitialScreen = () => {
                     </div> 
                 </div>
                 <div className='flex'>
-                    <p className='font-dmsans text-center font-black text-2xl mt-5 ml-2'>Climate action starts here</p>
+                    <p className='font-dmsans text-center font-black text-3xl mt-5 ml-2'>Sustainability starts with you.</p>
                 </div>
                 <div>
-                    <button onClick={() => window.location.href = '/email-input'} className='bg-gradient-to-r from-[#81C82B] to-[#4595D1] text-white font-dmsans text-lg font-black px-6 py-3 rounded-full mt-10 hover:scale-105 transition-transform duration-300'>
+                    <button onClick={() => window.location.href = '/getStarted'} className='bg-gradient-to-r from-[#81C82B] to-[#4595D1] text-white font-dmsans text-lg font-black px-6 py-3 rounded-full mt-10 hover:scale-105 transition-transform duration-300'>
                         Sign Up For Free!
                     </button>
                 </div>
@@ -24,7 +24,7 @@ const InitialScreen = () => {
                     <p className='font-dmsans font-medium text-xl mt-7'>Already have an account?</p>
                 </div>
                 <div>
-                    <button onClick={() => window.location.href = '/email-input'} className='bg-gray-200 border-2 border-black text-black font-dmsans text-xl font-black px-16 py-3 rounded-full mt-5 hover:scale-105 transition-transform duration-300'>
+                    <button onClick={() => window.location.href = '/getStarted'} className='bg-gray-200 border-2 border-black text-black font-dmsans text-xl font-black px-16 py-3 rounded-full mt-5 hover:scale-105 transition-transform duration-300'>
                         Log In
                     </button>
                 </div>
@@ -39,4 +39,4 @@ const InitialScreen = () => {
   )
 }
 
-export default InitialScreen
+export default InitialAuthScreen

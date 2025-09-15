@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 // Define props type
 interface SignupProps {
@@ -6,6 +7,7 @@ interface SignupProps {
 }
 
 const Signup: React.FC<SignupProps> = ({ Email }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>(Email || "");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -51,10 +53,10 @@ const Signup: React.FC<SignupProps> = ({ Email }) => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      alert("Signup successful!");
-    }
+
+      // Then at the placeholder:
+      navigate('/codeVerification', { state: { Email: email } });
+    
   };
 
   return (
@@ -65,17 +67,17 @@ const Signup: React.FC<SignupProps> = ({ Email }) => {
       >
         {/* UI content remains the same */}
         <div className="flex flex-row justify-center items-center mt-6">
-          <img src="Icon1.png" height={65} width={65} alt="Logo" />
+          <img src="Icon1.png" height={80} width={80} alt="Logo" />
           <div className="font-dmsans">
-            <h1 className="text-4xl font-black bg-gradient-to-r from-[#81C82B] to-[#4595D1] bg-clip-text text-transparent">
+            <h1 className="text-5xl font-black bg-gradient-to-r from-[#81C82B] to-[#4595D1] bg-clip-text text-transparent">
               Neutrawise
             </h1>
           </div>
         </div>
 
-        <div className="flex mt-10">
-          <p className="font-dmsans text-center font-black text-2xl mt-5 ml-2">
-            Climate action starts here
+        <div className="flex mt-8">
+          <p className="font-dmsans text-center font-black text-2xl mb-4 ml-2">
+            Your journey to net zero starts here.
           </p>
         </div>
 

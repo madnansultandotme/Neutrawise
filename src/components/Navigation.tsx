@@ -48,9 +48,11 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <Button onClick={() => window.location.href = '/auth'} variant="default" size="sm">
+            {location.pathname !== '/auth' && location.pathname !== '/getStarted' && location.pathname !== '/codeVerification' && (
+              <Button onClick={() => window.location.href = '/auth'} variant="default" size="sm">
               Get Started
-            </Button>
+              </Button>
+            )}
           </div>
 
           {/* Mobile menu button */}

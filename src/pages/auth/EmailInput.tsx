@@ -1,43 +1,56 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import Signup from "./Signup";
+import Login from "./Login";
 
 const EmailInput = ({ onEmailSubmit }) => {
-  const navigate = useNavigate();
-  const [email, setEmail] = React.useState('');
-  const [emailError, setEmailError] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [emailError, setEmailError] = React.useState('');
+    const [currentView, setCurrentView] = React.useState('email'); // 'email', 'login', or 'signup'
 
-const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-};
+    const validateEmail = (email) => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+    };
 
-const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    
-    if (value && !validateEmail(value)) {
-        setEmailError('Please enter a valid email address');
-    } else {
-        setEmailError('');
-    }
-};
+    const handleEmailChange = (e) => {
+            const value = e.target.value;
+            setEmail(value);
+            
+            if (value && !validateEmail(value)) {
+                    setEmailError('Please enter a valid email address');
+            } else {
+                    setEmailError('');
+            }
+    };
+    const handleContinue = () => {
+            if (!email) {
+                    setEmailError('Email is required');
+                    return;
+            }
+            if (!validateEmail(email)) {
+                    setEmailError('Please enter a valid email address');
+                    return;
+            }
+            onEmailSubmit(email);
+            
+            if (email === "user@gmail.com") {
+                    setCurrentView('login');
+            } 
+            else 
+            {
+                    setCurrentView('signup');
+            }
+    };
 
-const handleContinue = () => {
-    if (!email) {
-        setEmailError('Email is required');
-        return;
+    // Render based on current view
+    if (currentView === 'login') {
+            return <Login Email={email}/>;
     }
-    if (!validateEmail(email)) {
-        setEmailError('Please enter a valid email address');
-        return;
+
+    if (currentView === 'signup') {
+            return <Signup Email={email} />;
     }
-    onEmailSubmit(email);
-    if (email==="user@gmail.com"){
-        navigate("/login", { state: { Email:email } })
-        return;
-    }
-    navigate("/signup", { state: { Email: email } });
-};
   return (
     <div className='w-full items-center justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50'>
             <div className='w-[90%] md:w-[50%] flex flex-col pb-10 justify-center items-center '>
@@ -50,7 +63,7 @@ const handleContinue = () => {
                     </div> 
                 </div>
                 <div className='flex'>
-                    <p className='font-dmsans text-center font-black text-2xl mt-5 ml-2'>Climate action starts here</p>
+                    <p className='font-dmsans text-center font-black text-2xl mt-5 ml-2'>Own your footprint, shape the future.</p>
                 </div>
                 <div>
                     <p className='font-dmsans text-center font-bold text-lg mt-5'>Email Address</p>
