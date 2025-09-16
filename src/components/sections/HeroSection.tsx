@@ -50,7 +50,7 @@ const HeroSection = () => {
                 size="lg"
                 className="border-eco-green/30 text-eco-green hover:bg-eco-green/5 transition-all duration-300"
               >
-                Watch Demo
+                Calculate Footprint
               </Button>
             </div>
             
