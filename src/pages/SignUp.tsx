@@ -6,6 +6,7 @@ import AnimatedRedirect from '../components/AnimatedRedirect';
 import AuthLogo from '../components/AuthLogo';
 import ValidationMessage from '../components/ValidationMessage';
 import ThemedInput from '../components/ThemedInput';
+import VerificationCode from './VerificationCode';
 import '../App.css';
 
 export default function SignUp() {
@@ -14,6 +15,7 @@ export default function SignUp() {
   const [errors, setErrors] = useState({ name: '', email: '', password: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [showVerification, setShowVerification] = useState(false);
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -52,11 +54,11 @@ export default function SignUp() {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      setSuccessMessage(' Account created successfully! Welcome to Neutrawise - let\'s build a greener future together!');
-      // Redirect to sign-in page after showing success message
+      setSuccessMessage('✓ Account created successfully! Please check your email for verification.');
+      // Show verification screen instead of redirecting
       setTimeout(() => {
-        navigate('/signin');
-      }, 3000);
+        setShowVerification(true);
+      }, 2000);
     }, 2000);
   };
 
@@ -76,6 +78,21 @@ export default function SignUp() {
       navigate('/signin');
     }, 1200);
   };
+
+  const handleResendCode = () => {
+    // Simulate resending verification code
+    console.log('Resending verification code to:', formData.email);
+  };
+
+  // Show verification screen if account was created
+  if (showVerification) {
+    return (
+      <VerificationCode 
+        email={formData.email}
+        onResendCode={handleResendCode}
+      />
+    );
+  }
 
   if (animating) return <AnimatedRedirect to="/signin" />;
 

@@ -430,3 +430,44 @@ h1, h2, h3, h4, h5, h6 {
 .read-the-docs {
   color: #888;
 }
+
+/* Verification Code Input Styles */
+.verification-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: 'DM Sans', monospace;
+  background: #fff;
+}
+
+.verification-input:focus {
+  border-color: #4696D2;
+  box-shadow: 0 0 0 3px rgba(70, 150, 210, 0.1);
+}
+
+.verification-input.filled {
+  border-color: #82C92C;
+  background: rgba(130, 201, 44, 0.05);
+}
+
+.verification-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Pulse animation for verification inputs */
+@keyframes verificationPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.verification-input:focus {
+  animation: verificationPulse 0.3s ease;
+}
