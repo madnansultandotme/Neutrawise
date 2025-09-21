@@ -11,6 +11,7 @@ import HowItWorks from "./pages/HowItWorks";
 import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import EmissionsCalculator from "./pages/EmissionCalculator";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/calculate-footprint" element={<EmissionsCalculator />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

@@ -1,120 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Brand Guidelines Typography & Color System
+   Primary: DM Sans (Regular & Bold)
+   Secondary: Sloop Script Pro (Decorative)
+   Colors: Black (#000000), Blue (#4696D2), Green (#82C92C)
 */
 
 @layer base {
   :root {
-    --background: 120 20% 98%;
-    --foreground: 140 80% 8%;
+    /* Updated brand color system */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
-    --card: 120 40% 99%;
-    --card-foreground: 140 70% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 120 40% 99%;
-    --popover-foreground: 140 70% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 150 60% 35%;
-    --primary-foreground: 120 40% 98%;
+    /* Primary brand color - Black */
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 110 30% 92%;
-    --secondary-foreground: 140 60% 20%;
+    /* Secondary brand color - Blue */
+    --secondary: 205 63% 55%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 110 25% 94%;
-    --muted-foreground: 140 25% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 170 50% 88%;
-    --accent-foreground: 150 70% 25%;
+    /* Accent brand color - Green */
+    --accent: 79 67% 46%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 120 20% 88%;
-    --input: 120 20% 92%;
-    --ring: 150 60% 35%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 0 0% 0%;
 
-    /* Sustainability Design Tokens */
-    --eco-green: 150 60% 35%;
-    --eco-green-light: 140 50% 45%;
-    --eco-blue: 200 70% 45%;
-    --eco-earth: 25 40% 55%;
-    --eco-sage: 110 30% 65%;
+    /* Brand Design Tokens */
+    --brand-black: 0 0% 0%;
+    --brand-blue: 205 63% 55%;
+    --brand-green: 79 67% 46%;
     
-    /* Gradients */
-    --gradient-eco: linear-gradient(135deg, hsl(150 60% 35%), hsl(170 50% 40%));
-    --gradient-hero: linear-gradient(135deg, hsl(150 60% 35%), hsl(200 70% 45%));
-    --gradient-earth: linear-gradient(180deg, hsl(120 40% 99%), hsl(110 25% 94%));
+    /* Legacy eco colors mapped to new brand system */
+    --eco-green: 79 67% 46%;
+    --eco-green-light: 81 69% 52%;
+    --eco-blue: 205 63% 55%;
+    --eco-earth: 0 0% 0%;
+    --eco-sage: 74 65% 38%;
     
-    /* Shadows */
-    --shadow-eco: 0 10px 30px -10px hsl(150 60% 35% / 0.2);
-    --shadow-soft: 0 4px 20px hsl(140 20% 20% / 0.1);
+    /* Brand gradients */
+    --gradient-brand: linear-gradient(135deg, hsl(205 63% 55%), hsl(79 67% 46%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0%), hsl(205 63% 55%));
+    --gradient-earth: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 96%));
     
-    /* Animations */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    /* Advanced shadows */
-    --shadow-glow: 0 0 40px hsl(150 60% 35% / 0.15);
-    --shadow-premium: 0 20px 40px -12px hsl(150 60% 35% / 0.25);
+    /* Shadows with brand colors */
+    --shadow-brand: 0 10px 30px -10px hsl(205 63% 55% / 0.2);
+    --shadow-soft: 0 4px 20px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 40px hsl(79 67% 46% / 0.15);
+    --shadow-premium: 0 20px 40px -12px hsl(205 63% 55% / 0.25);
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 205 63% 55%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 205 63% 45%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 79 67% 56%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 205 63% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15.9%;
+    --sidebar-ring: 205 63% 55%;
   }
 }
 
@@ -124,6 +125,49 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Typography Classes */
+  .font-primary {
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .font-secondary {
+    font-family: 'Sloop Script Pro', cursive;
+  }
+
+  /* Brand Typography Utilities */
+  .text-brand-headline {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 700;
+  }
+
+  .text-brand-body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  .text-brand-accent {
+    font-family: 'Sloop Script Pro', cursive;
+    font-weight: 400;
+  }
+
+  /* Brand Color Utilities */
+  .bg-brand-gradient {
+    background: var(--gradient-brand);
+  }
+
+  .bg-brand-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+
+  .shadow-brand-glow {
+    box-shadow: var(--shadow-glow);
   }
 }

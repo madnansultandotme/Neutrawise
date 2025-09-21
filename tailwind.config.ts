@@ -52,12 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Brand Colors
+				brand: {
+					black: '#000000',
+					blue: '#4696D2',
+					green: '#82C92C'
+				},
+				// Legacy eco colors mapped to new brand colors
 				eco: {
-					green: 'hsl(var(--eco-green))',
-					'green-light': 'hsl(var(--eco-green-light))',
-					blue: 'hsl(var(--eco-blue))',
-					earth: 'hsl(var(--eco-earth))',
-					sage: 'hsl(var(--eco-sage))'
+					green: '#82C92C',
+					'green-light': '#9CD63A',
+					blue: '#4696D2',
+					earth: '#000000',
+					sage: '#6FA622'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -69,6 +76,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				'sans': ['DM Sans', 'system-ui', 'sans-serif'],
+				'script': ['Sloop Script Pro', 'cursive'],
+				'primary': ['DM Sans', 'system-ui', 'sans-serif'],
+				'secondary': ['Sloop Script Pro', 'cursive']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
