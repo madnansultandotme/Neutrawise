@@ -202,7 +202,7 @@ const SummaryModal = ({ isOpen, onClose, totalEmissions, totalEmissionsBeforeUpg
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl" style={{ color: '#000000' }}>
             <TreePine className="h-6 w-6" style={{ color: '#82C92C' }} />
-            Your Carbon Footprint Report
+            {userName ? `${userName}'s Carbon Footprint Report` : 'Your Carbon Footprint Report'}
           </DialogTitle>
           <DialogDescription>
             Detailed breakdown of your annual CO2 emissions
@@ -802,6 +802,7 @@ export default function EmissionsCalculator() {
         onClose={() => setShowModal(false)}
         totalEmissions={adjustedEmissions}
         totalEmissionsBeforeUpgrades={totalEmissionsBeforeUpgrades}
+        userName={user?.name}
         breakdownData={{
           vehicles: adjustedVehicleEmissions,
           homeEnergy: homeEnergyTotal,
