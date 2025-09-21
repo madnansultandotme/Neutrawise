@@ -60,9 +60,14 @@ const Signup: React.FC<SignupProps> = ({ Email }) => {
   };
 
   return (
-    <div className="w-full items-center justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="w-full items-center relative justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50">
+      <div className='absolute justify-end items-end z-0 w-full h-full flex'>
+
+                <img src="vector_tr1.png" className='h-full hidden sm:flex sm:w-[45%] lg:w-[55%] max-w-2xl' alt="image" />
+                <img src="vector_br1.png" className='absolute left-0 hidden sm:flex sm:w-[25%] h-[60%] lg:w-[35%] max-w-2xl' alt="" />
+            </div>
       <form
-        className="w-[90%] md:w-[50%] flex flex-col pb-10 justify-center items-center"
+        className="w-[90%] md:w-[50%] flex flex-col z-10 pb-10 justify-center items-center"
         onSubmit={handleSubmit}
       >
         {/* UI content remains the same */}
@@ -134,7 +139,7 @@ const Signup: React.FC<SignupProps> = ({ Email }) => {
           <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>
         )}
 
-        <div className="w-full flex justify-center ">
+        <div className="w-full flex mb-10 justify-center ">
           <button
             type="submit"
             className="w-[60%] max-w-96 bg-gradient-to-r from-[#81C82B] to-[#4595D1] text-white font-dmsans font-black px-6 py-3 rounded-full mt-10 hover:scale-105 transition-transform duration-300"

@@ -52,8 +52,13 @@ const EmailInput = ({ onEmailSubmit }) => {
             return <Signup Email={email} />;
     }
   return (
-    <div className='w-full items-center justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50'>
-            <div className='w-[90%] md:w-[50%] flex flex-col pb-10 justify-center items-center '>
+    <div className='w-full items-center relative justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50'>
+        <div className='absolute justify-end items-end z-0 w-full h-full flex'>
+
+                <img src="vector_tr1.png" className='h-full hidden sm:flex sm:w-[45%] lg:w-[55%] max-w-2xl' alt="image" />
+                <img src="vector_br1.png" className='absolute left-0 hidden sm:flex sm:w-[25%] h-[60%] lg:w-[35%] max-w-2xl' alt="" />
+            </div>
+            <div className='w-[90%] md:w-[50%] flex z-10 flex-col pb-10 justify-center items-center '>
                 <div className='absolute top-10 right-10'>
                 </div>
                 <div className='flex flex-row justify-center items-center mt-16'>
@@ -88,7 +93,7 @@ const EmailInput = ({ onEmailSubmit }) => {
                 </div>
 
                 <div>
-                    <button className='font-dmsans text-center font-light text-xs mt-7'>By clicking continue you agree to Neutrawise's <span className='underline font-black'>Terms of use</span> and acknowledge the terms of our <span className='underline font-black'>Privacy Policy.</span></button>
+                    <button className='font-dmsans text-center font-light text-xs mt-7 mb-10'>By clicking continue you agree to Neutrawise's <span className='underline font-black'>Terms of use</span> and acknowledge the terms of our <span className='underline font-black'>Privacy Policy.</span></button>
                 </div>
                 
             </div>

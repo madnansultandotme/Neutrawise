@@ -2,10 +2,13 @@ import React from 'react'
 
 const InitialAuthScreen = () => {
   return (
-        <div className='w-full items-center justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50'>
-            <div className='w-[90%] md:w-[50%] flex flex-col pb-14 justify-center items-center '>
-                <div className='absolute top-10 right-10'>
-                </div>
+        <div className='w-full relative items-center justify-start flex flex-col bg-gradient-to-br from-green-50 to-blue-50'>
+            <div className='absolute justify-end z-0 items-end w-full h-full flex'>
+
+                <img src="vector_tr1.png" className='h-full hidden sm:flex sm:w-[45%] lg:w-[55%] max-w-2xl' alt="image" />
+                <img src="vector_br1.png" className='absolute left-0 hidden sm:flex sm:w-[25%] h-[60%] lg:w-[35%] max-w-2xl' alt="" />
+            </div>
+            <div className='w-[90%] md:w-[50%] flex flex-col z-10 transparent pb-14 justify-center items-center '>   
                 <div className='flex flex-row justify-center items-center mt-9'>
                     <img src="Icon1.png" height={80} width={80} alt="Logo" />
                     <div className='font-dmsans'>
