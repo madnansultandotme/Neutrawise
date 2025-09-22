@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import {
   Dialog,
   DialogContent,
@@ -159,24 +161,29 @@ interface SummaryModalProps {
   };
 }
 
+// Utility function to generate recommendations based on emissions data
+const getRecommendations = (data: {
+  homeEnergy: number;
+  vehicles: number;
+  wasteSavings: number;
+}) => {
+  const recommendations = [];
+  
+  if (data.homeEnergy > 5000) {
+    recommendations.push("Consider switching to renewable energy sources or improving home insulation");
+  }
+  if (data.vehicles > 4000) {
+    recommendations.push("Explore hybrid/electric vehicles or public transportation options");
+  }
+  if (data.wasteSavings < 200) {
+    recommendations.push("Increase recycling efforts to reduce your carbon footprint");
+  }
+  
+  return recommendations;
+};
+
 const SummaryModal = ({ isOpen, onClose, totalEmissions, totalEmissionsBeforeUpgrades, userName, breakdownData }: SummaryModalProps) => {
   const lbsToTons = (lbs: number) => lbs / 2204.62262;
-
-  const getRecommendations = () => {
-    const recommendations = [];
-    
-    if (breakdownData.homeEnergy > 5000) {
-      recommendations.push("Consider switching to renewable energy sources or improving home insulation");
-    }
-    if (breakdownData.vehicles > 4000) {
-      recommendations.push("Explore hybrid/electric vehicles or public transportation options");
-    }
-    if (breakdownData.wasteSavings < 200) {
-      recommendations.push("Increase recycling efforts to reduce your carbon footprint");
-    }
-    
-    return recommendations;
-  };
 
   const exportData = () => {
     const data = {
@@ -184,7 +191,7 @@ const SummaryModal = ({ isOpen, onClose, totalEmissions, totalEmissionsBeforeUpg
       totalEmissionsBeforeUpgrades,
       breakdown: breakdownData,
       date: new Date().toISOString(),
-      recommendations: getRecommendations()
+      recommendations: getRecommendations(breakdownData)
     };
     
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -275,11 +282,11 @@ const SummaryModal = ({ isOpen, onClose, totalEmissions, totalEmissionsBeforeUpg
           </div>
 
           {/* Recommendations */}
-          {getRecommendations().length > 0 && (
+          {getRecommendations(breakdownData).length > 0 && (
             <div className="space-y-3">
               <h3 className="font-semibold" style={{ color: '#000000' }}>Recommendations</h3>
               <div className="space-y-2">
-                {getRecommendations().map((rec, index) => (
+                {getRecommendations(breakdownData).map((rec, index) => (
                   <div key={index} className="p-3 border-l-4 rounded" style={{ backgroundColor: '#fffdf0', borderLeftColor: '#82C92C' }}>
                     <p className="text-sm text-gray-700">{rec}</p>
                   </div>
@@ -343,6 +350,7 @@ export default function EmissionsCalculator() {
 
   // Modal state
   const [showModal, setShowModal] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   
   // User state
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
@@ -456,8 +464,97 @@ export default function EmissionsCalculator() {
   // Convert to tons
   const lbsToTons = (lbs: number) => lbs / 2204.62262; // short ton = 2204.62262 lbs
 
-  const showSummary = () => {
-    setShowModal(true);
+  const showSummary = async () => {
+    if (!user) return;
+    
+    setIsSaving(true);
+    try {
+      // Prepare the data according to our schema
+      const inputData = {
+        location: {
+          zip_code: zip,
+          heating_source: heatingSource === 1 ? 'Natural Gas' : 
+                         heatingSource === 2 ? 'Electric Heat' : 
+                         heatingSource === 3 ? 'Fuel Oil' : 'Propane'
+        },
+        vehicles: vehicles.map(v => ({
+          miles: v.miles,
+          milesInputType: v.milesInputType === 1 ? 'week' : 'year',
+          mpg: v.mpg
+        })),
+        vehicle_maintenance: maintenance === 1,
+        home_energy: {
+          natural_gas: { value: natgasValue, unit: natgasUnit === 1 ? 'dollars' : 'ccf' },
+          electricity: { value: elecValue, unit: elecUnit === 1 ? 'dollars' : 'kwh' },
+          fuel_oil: fuelOilMonthly,
+          propane: propaneMonthly
+        },
+        recycling: waste,
+        upgrades: {
+          heating: heatingUpgrade,
+          washer: washerUpgrade
+        }
+      };
+
+      const results = {
+        vehicle_emissions: {
+          total: vehicleEmissionsTotal,
+          adjusted: adjustedVehicleEmissions
+        },
+        home_energy_emissions: {
+          total: homeEnergyTotal,
+          natural_gas: emissionsNaturalGas,
+          electricity: emissionsElectricity,
+          fuel_oil: emissionsFuelOil,
+          propane: emissionsPropane
+        },
+        waste_savings: emissionsSavedWaste,
+        upgrades_savings: totalUpgradesSavings,
+        emissions_before_upgrades: totalEmissionsBeforeUpgrades,
+        final_emissions: adjustedEmissions,
+        recommendations: getRecommendations({
+          homeEnergy: homeEnergyTotal,
+          vehicles: adjustedVehicleEmissions,
+          wasteSavings: emissionsSavedWaste
+        })
+      };
+
+      // Save to Supabase
+      const { error } = await supabase
+        .from('footprint_submissions')
+        .insert({
+          company_name: user.name,
+          contact_email: user.email,
+          input_data: inputData,
+          results: {
+            ...results,
+            final_emissions: adjustedEmissions // This is needed for the computed total_emissions
+          }
+        });
+
+      if (error) throw error;
+
+      // Show the modal after successful save
+      setShowModal(true);
+    } catch (error) {
+      console.error('Error saving submission:', error);
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+      }
+      alert('Failed to save your submission. Please check the console for error details.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // Close handler that cleans up state
+  const handleClose = () => {
+    setShowModal(false);
+    // Optional: Reset form if needed
+    // setZip("");
+    // setHeatingSource(1);
+    // setVehicles([{ id: 1, miles: 0, milesInputType: 2, mpg: 25 }]);
+    // ... etc
   };
 
   // ----------------------
@@ -786,10 +883,11 @@ export default function EmissionsCalculator() {
         <div className="mt-4">
           <button
             onClick={showSummary}
-            className="px-6 py-3 rounded-lg font-semibold text-white shadow-lg hover:opacity-90 transition-opacity"
+            disabled={isSaving}
+            className="px-6 py-3 rounded-lg font-semibold text-white shadow-lg hover:opacity-90 transition-opacity disabled:opacity-50"
             style={{ background: "linear-gradient(90deg,#4696D2,#82C92C)" }}
           >
-            Show Summary
+            {isSaving ? 'Saving...' : 'Show Summary'}
           </button>
         </div>
       </section>
@@ -799,7 +897,7 @@ export default function EmissionsCalculator() {
       {/* Summary Modal */}
       <SummaryModal 
         isOpen={showModal}
-        onClose={() => setShowModal(false)}
+        onClose={handleClose}
         totalEmissions={adjustedEmissions}
         totalEmissionsBeforeUpgrades={totalEmissionsBeforeUpgrades}
         userName={user?.name}

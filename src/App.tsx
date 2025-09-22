@@ -13,6 +13,8 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import EmissionsCalculator from "./pages/EmissionCalculator";
 import NotFound from "./pages/NotFound";
+import { Wardah } from "./pages/Wardah";
+import { WardahDashboardPage } from "./pages/WardahDashboard";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,8 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/calculate-footprint" element={<EmissionsCalculator />} />
+              <Route path="/wardah" element={<Wardah />} />
+              <Route path="/wardah/dashboard" element={<WardahDashboardPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
