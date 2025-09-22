@@ -1,16 +1,34 @@
 # Neutrawise
 
-Neutrawise is a modern web application designed to promote sustainability and environmental awareness. Built with React, TypeScript, Vite, and Tailwind CSS, it features a clean, responsive UI and modular architecture for easy scalability and maintainability.
+Neutrawise is a modern web application designed to promote sustainability and environmental awareness, featuring a comprehensive carbon footprint calculator. Built with React, TypeScript, Vite, and Tailwind CSS, it features a clean, responsive UI and modular architecture for easy scalability and maintainability.
 
 ## Features
 
-- **Landing Page**: Engaging hero section, features overview, testimonials, and pricing preview.
-- **Dashboard**: Interactive dashboard for user insights and analytics.
-- **Blog**: Informative articles and updates on sustainability topics.
-- **About & Contact**: Company information and contact form.
-- **Reusable UI Components**: Accordion, alert, badge, button, card, carousel, chart, dialog, drawer, dropdown, form, menu, pagination, popover, progress, radio group, select, sheet, sidebar, skeleton, slider, switch, table, tabs, textarea, toast, toggle, tooltip, and more.
-- **Custom Hooks**: For mobile detection and toast notifications.
-- **Asset Management**: Optimized images and SVGs for fast loading.
+### Carbon Footprint Calculator
+- 🌍 Comprehensive household emissions calculation
+- 📊 Detailed breakdown of emission sources
+- 💾 Data persistence with Supabase backend
+- 🔄 Real-time calculations and updates
+- 📱 Mobile-responsive interface
+- 📈 Interactive data visualization
+- 💡 Personalized recommendations
+- 📑 Exportable reports in JSON format
+
+### Core Platform Features
+- **Landing Page**: Engaging hero section, features overview, testimonials, and pricing preview
+- **Dashboard**: Interactive dashboard for user insights and analytics
+- **Blog**: Informative articles and updates on sustainability topics
+- **About & Contact**: Company information and contact form
+- **Reusable UI Components**: Comprehensive collection of UI components
+- **Custom Hooks**: For mobile detection and toast notifications
+- **Asset Management**: Optimized images and SVGs for fast loading
+
+### Calculator Components
+- Vehicle emissions tracking
+- Home energy consumption analysis
+- Waste and recycling impact
+- Upgrade recommendations
+- Maintenance savings calculator
 
 ## Tech Stack
 
@@ -180,6 +198,45 @@ npm run lint
 3. Commit your changes (`git commit -am 'Add new feature'`)
 4. Push to the branch (`git push origin feature/YourFeature`)
 5. Open a Pull Request
+
+## Changelog
+
+### [1.1.0] - 2025-09-22
+#### Added
+- Carbon Footprint Calculator
+  - Comprehensive household emissions tracking
+  - Vehicle emissions calculator
+  - Home energy consumption analysis
+  - Waste and recycling impact calculator
+  - Upgrade recommendations system
+- Supabase Integration
+  - User authentication system
+  - Data persistence for calculator results
+  - Secure data storage
+- Export Functionality
+  - JSON report generation
+  - Detailed emissions breakdown
+  - Personalized recommendations
+
+### [1.0.0] - 2025-09-15
+#### Added
+- Initial release of the Neutrawise platform
+- Landing page with hero section
+- Features overview
+- Testimonials section
+- Pricing preview
+- Blog functionality
+- About and contact pages
+- Mobile responsiveness
+- UI component library
+
+#### Technical Updates
+- React 18 implementation
+- TypeScript integration
+- Vite build system
+- Tailwind CSS styling
+- ESLint configuration
+- PostCSS setup
 
 ## License
 
